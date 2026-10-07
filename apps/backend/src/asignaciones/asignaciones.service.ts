@@ -1,0 +1,16 @@
+import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { AsignacionesRepository } from './asignaciones.repository';
+import { CreateAsignacionDto } from './dto/create-asignacion.dto';
+import { DevolverAsignacionDto } from './dto/devolver-asignacion.dto';
+import { QueryAsignacionesDto } from './dto/query-asignaciones.dto';
+
+@Injectable()
+export class AsignacionesService {
+  constructor(private readonly repo:AsignacionesRepository){}
+  list(q:QueryAsignacionesDto,idActivo?:number){return this.repo.list(q,idActivo);}
+  async detail(id:number){const x=await this.repo.detail(id);if(!x)throw new NotFoundException('Asignación no encontrada.');return x;}
+  availableAssets(search?:string){return this.repo.availableAssets(search);}
+  async create(d:CreateAsignacionDto,user:number,ip:string){const ids=d.accesorios.map(x=>x.idAccesorio);if(new Set(ids).size!==ids.length)throw new BadRequestException('No se puede repetir un accesorio.');const s=await this.repo.assignmentReferences(d.idActivo,d.idTrabajador,ids);if(!Number(s.activoExiste))throw new NotFoundException('Activo no encontrado.');if(!Number(s.trabajadorExiste))throw new NotFoundException('Trabajador no encontrado.');if(s.estadoTrabajador!=='ACTIVO')throw new BadRequestException('El trabajador no está activo.');if(Number(s.asignacionVigente))throw new ConflictException('El activo ya tiene una asignación vigente.');if(s.estadoActivo!=='DISPONIBLE')throw new ConflictException('El activo ya no está disponible.');if(Number(s.accesoriosExisten)!==ids.length)throw new NotFoundException('Uno de los accesorios no existe.');if(Number(s.accesoriosDisponibles)!==ids.length)throw new ConflictException('Uno de los accesorios ya no está disponible.');try{return await this.repo.create(d,user,ip);}catch(e){return this.mapConflict(e);}}
+  async returnAssignment(id:number,d:DevolverAsignacionDto,user:number,ip:string){const current=await this.detail(id) as {vigente:boolean};if(!current.vigente)throw new ConflictException('La asignación ya fue devuelta.');const ids=d.accesorios.map(x=>x.idAsignacionAccesorio);if(new Set(ids).size!==ids.length)throw new BadRequestException('No se puede repetir un accesorio.');try{return await this.repo.returnAssignment(id,d,user,ip);}catch(e){return this.mapConflict(e);}}
+  private mapConflict(e:unknown):never{const x=e as {number?:number;message?:string;code?:string;state?:Record<string,unknown>};if(x.code==='ALREADY_RETURNED')throw new ConflictException('La asignación ya fue devuelta.');if(x.code==='ACCESSORY_SET')throw new BadRequestException('Debe informar el resultado de todos los accesorios entregados.');if(x.message==='STATE_CONFLICT'){if(Number(x.state?.asignacionVigente))throw new ConflictException('El activo ya tiene una asignación vigente.');if(x.state?.estadoActivo!=='DISPONIBLE')throw new ConflictException('El activo ya no está disponible.');throw new ConflictException('Uno de los accesorios ya no está disponible.');}const message=x.message?.toLowerCase()??'';if(x.number===2601||x.number===2627||message.includes('accessory_conflict')||message.includes('asignación activa'))throw new ConflictException(message.includes('accessor')?'Uno de los accesorios ya no está disponible.':'El activo ya tiene una asignación vigente.');throw e;}
+}

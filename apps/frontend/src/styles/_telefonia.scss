@@ -1,0 +1,116 @@
+.telefonia-kpis {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+
+  div {
+    display: grid;
+    gap: 3px;
+    min-width: 170px;
+    flex: 1;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+
+    strong {
+      font-size: 22px;
+    }
+
+    span {
+      display: block;
+      color: var(--text-secondary);
+      font-size: 11px;
+    }
+  }
+}
+
+.warning-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  background: #fffbeb;
+  border: 1px solid #fef3c7;
+  border-left: 4px solid #f59e0b;
+  border-radius: var(--radius-md);
+
+  .warning-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #92400e;
+  }
+
+  ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #78350f;
+    font-size: 12px;
+    display: grid;
+    gap: 4px;
+  }
+}
+
+.telefonia-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+
+  button {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+
+    &.active {
+      color: var(--primary-color);
+      border-bottom-color: var(--primary-color);
+      font-weight: 600;
+    }
+  }
+}
+
+.card-with-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+
+  h2 {
+    margin: 0;
+  }
+}
+
+.action-buttons-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.dialog-form {
+  display: grid;
+  gap: 16px;
+  padding-top: 10px;
+
+  .p-dropdown, .p-inputtext, .p-inputtextarea {
+    width: 100%;
+  }
+}

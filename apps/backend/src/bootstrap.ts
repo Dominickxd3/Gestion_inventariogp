@@ -10,7 +10,11 @@ import { Environment } from './config/environment';
 import { ApiExceptionFilter } from './common/filters/api-exception.filter';
 
 export async function createApplication(): Promise<NestFastifyApplication> {
-  const app = await NestFactory.create<NestFastifyApplication>(AppModule, new FastifyAdapter({ bodyLimit: 1048576 }), { bufferLogs: true, abortOnError: false });
+  const adapter = new FastifyAdapter({
+    bodyLimit: 1048576,
+    trustProxy: process.env.TRUST_PROXY || '127.0.0.1',
+  });
+  const app = await NestFactory.create<NestFastifyApplication>(AppModule, adapter, { bufferLogs: true, abortOnError: false });
   const config = app.get(ConfigService<Environment, true>);
   app.useLogger(app.get(Logger));
   app.setGlobalPrefix('api/v1');

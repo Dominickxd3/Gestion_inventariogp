@@ -1,9 +1,9 @@
 import { ConfigService } from '@nestjs/config';
 import { PinoLogger } from 'nestjs-pino';
-import { ConnectionPool } from 'mssql';
+import { ConnectionPool, Transaction } from 'mssql';
 import { DatabaseService } from '../src/database/database.service';
 import { Environment, validateEnvironment } from '../src/config/environment';
-jest.mock('mssql', () => ({ ConnectionPool: jest.fn() }));
+jest.mock('mssql', () => ({ ConnectionPool: jest.fn(), Transaction: jest.fn() }));
 describe('Pool SQL Server', () => {
   const query = jest.fn().mockResolvedValue({ recordset: [{ ready: 1 }] });
   const pool = { connected: false, connect: jest.fn(), request: jest.fn(() => ({ query })), close: jest.fn(), on: jest.fn() };
@@ -13,7 +13,7 @@ describe('Pool SQL Server', () => {
     pool.connect.mockImplementation(async () => { pool.connected = true; return pool; });
     (ConnectionPool as unknown as jest.Mock).mockImplementation(() => pool);
     database = new DatabaseService(
-      new ConfigService<Environment, true>(validateEnvironment({ DB_SERVER: 'localhost', DB_USER: 'test', DB_PASSWORD: 'test', CORS_ORIGINS: 'http://localhost:5173' })),
+      new ConfigService<Environment, true>(validateEnvironment({ DB_SERVER: 'localhost', DB_USER: 'test', DB_PASSWORD: 'test', CORS_ORIGINS: 'http://localhost:5173', JWT_SECRET: 'test-only-secret-with-at-least-32-characters' })),
       { error: jest.fn() } as unknown as PinoLogger,
     );
   });
@@ -31,6 +31,12 @@ describe('Pool SQL Server', () => {
   it('cierra el pool al detener la aplicación', async () => {
     await database.onApplicationShutdown();
     expect(pool.close).toHaveBeenCalledTimes(1);
+  });
+  it('revierte la transacción cuando falla cualquier operación', async () => {
+    const tx = { begin: jest.fn().mockResolvedValue(undefined), commit: jest.fn().mockResolvedValue(undefined), rollback: jest.fn().mockResolvedValue(undefined) };
+    (Transaction as unknown as jest.Mock).mockImplementation(() => tx);
+    await expect(database.transaction(async () => { throw new Error('auditoría fallida'); })).rejects.toThrow('auditoría fallida');
+    expect(tx.rollback).toHaveBeenCalledTimes(1); expect(tx.commit).not.toHaveBeenCalled();
   });
 });
 

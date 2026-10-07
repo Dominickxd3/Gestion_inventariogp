@@ -4,6 +4,11 @@ export interface Environment {
   DB_SERVER: string; DB_PORT: number; DB_USER: string; DB_PASSWORD: string;
   DB_DATABASE: string; DB_ENCRYPT: boolean; DB_TRUST_SERVER_CERTIFICATE: boolean;
   DB_CONNECTION_TIMEOUT_MS: number; DB_REQUEST_TIMEOUT_MS: number; DB_POOL_MAX: number;
+  JWT_SECRET: string; JWT_EXPIRES_IN: string; JWT_ISSUER: string; JWT_AUDIENCE: string;
+  AUTH_MODE: 'ERP' | 'LOCAL_TEST';
+  PUBLIC_APP_URL: string;
+  DOCUMENTOS_STORAGE_PATH: string;
+  TRUST_PROXY: string;
 }
 export function validateEnvironment(raw: Record<string, unknown>): Environment {
   const required = (key: string): string => {
@@ -34,6 +39,13 @@ export function validateEnvironment(raw: Record<string, unknown>): Environment {
   if (database !== 'DB_GP_GestionTI') throw new Error('DB_DATABASE debe ser DB_GP_GestionTI');
   const logLevel = str('LOG_LEVEL', 'info');
   if (!['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent'].includes(logLevel)) throw new Error('LOG_LEVEL inválido');
+  const jwtSecret = required('JWT_SECRET');
+  if (jwtSecret.length < 32) throw new Error('JWT_SECRET debe tener al menos 32 caracteres');
+  const authMode = str('AUTH_MODE', nodeEnv === 'production' ? 'ERP' : 'LOCAL_TEST');
+  if (authMode !== 'ERP' && authMode !== 'LOCAL_TEST') throw new Error('AUTH_MODE debe ser ERP o LOCAL_TEST');
+  if (nodeEnv === 'production' && authMode === 'LOCAL_TEST') {
+    throw new Error('AUTH_MODE no puede ser LOCAL_TEST en ambiente de producción');
+  }
   return {
     NODE_ENV: nodeEnv, HOST: str('HOST', '127.0.0.1'), PORT: integer('PORT', 3000, 65535),
     CORS_ORIGINS: origins, LOG_LEVEL: logLevel, SWAGGER_ENABLED: boolean('SWAGGER_ENABLED', nodeEnv !== 'production'),
@@ -42,6 +54,12 @@ export function validateEnvironment(raw: Record<string, unknown>): Environment {
     DB_ENCRYPT: boolean('DB_ENCRYPT', true), DB_TRUST_SERVER_CERTIFICATE: boolean('DB_TRUST_SERVER_CERTIFICATE', false),
     DB_CONNECTION_TIMEOUT_MS: integer('DB_CONNECTION_TIMEOUT_MS', 10000),
     DB_REQUEST_TIMEOUT_MS: integer('DB_REQUEST_TIMEOUT_MS', 15000), DB_POOL_MAX: integer('DB_POOL_MAX', 10, 100),
+    JWT_SECRET: jwtSecret, JWT_EXPIRES_IN: str('JWT_EXPIRES_IN', '8h'),
+    JWT_ISSUER: str('JWT_ISSUER', 'gp-gestion-ti'), JWT_AUDIENCE: str('JWT_AUDIENCE', 'gp-gestion-ti-web'),
+    AUTH_MODE: (str('AUTH_MODE', nodeEnv === 'production' ? 'ERP' : 'LOCAL_TEST') === 'ERP' ? 'ERP' : 'LOCAL_TEST') as 'ERP' | 'LOCAL_TEST',
+    PUBLIC_APP_URL: str('PUBLIC_APP_URL', 'http://127.0.0.1:5173'),
+    DOCUMENTOS_STORAGE_PATH: str('DOCUMENTOS_STORAGE_PATH', './uploads/documentos'),
+    TRUST_PROXY: str('TRUST_PROXY', '127.0.0.1'),
   };
 }
 

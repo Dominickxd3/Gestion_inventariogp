@@ -1,5 +1,5 @@
 import { validateEnvironment } from '../src/config/environment';
-const valid = { DB_SERVER: 'localhost', DB_USER: 'test', DB_PASSWORD: 'secret', CORS_ORIGINS: 'http://localhost:5173' };
+const valid = { DB_SERVER: 'localhost', DB_USER: 'test', DB_PASSWORD: 'secret', CORS_ORIGINS: 'http://localhost:5173', JWT_SECRET: 'test-only-secret-with-at-least-32-characters' };
 describe('Configuración', () => {
   it('requiere contraseña sin exponer su contenido', () => {
     expect(() => validateEnvironment({ ...valid, DB_PASSWORD: '' })).toThrow('DB_PASSWORD');

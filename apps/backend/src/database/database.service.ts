@@ -1,6 +1,6 @@
 import { Injectable, OnApplicationShutdown } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { ConnectionPool, Request } from 'mssql';
+import { ConnectionPool, Request, Transaction } from 'mssql';
 import { PinoLogger } from 'nestjs-pino';
 import { Environment } from '../config/environment';
 
@@ -39,6 +39,20 @@ export class DatabaseService implements OnApplicationShutdown {
       await request.query('SELECT 1 AS ready');
       return true;
     } catch { return false; }
+  }
+
+  async transaction<T>(work: (transaction: Transaction) => Promise<T>): Promise<T> {
+    await this.request();
+    const transaction = new Transaction(this.pool);
+    await transaction.begin();
+    try {
+      const result = await work(transaction);
+      await transaction.commit();
+      return result;
+    } catch (error) {
+      await transaction.rollback().catch(() => undefined);
+      throw error;
+    }
   }
 
   async onApplicationShutdown(): Promise<void> {

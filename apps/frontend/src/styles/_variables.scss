@@ -1,7 +1,7 @@
 :root {
-  --sidebar-width: 240px; --content-max-width: 1280px; --border-color: #e3e8e5;
-  --background: #f5f7f6; --surface: #fff; --text-primary: #26362e;
-  --text-secondary: #68756e; --radius-sm: 6px; --radius-md: 10px;
-  --shadow-sm: 0 2px 8px rgb(25 45 32 / 3%);
+  --sidebar-width: 244px; --sidebar-collapsed-width: 72px; --app-background: #f5f7f6;
+  --surface: #fff; --border-color: #e1e7e3; --text-primary: #24332b;
+  --text-secondary: #66736c; --primary: #356a4d; --primary-hover: #295b40;
+  --primary-soft: #edf4ef; --radius-sm: 6px; --radius-md: 10px;
+  --shadow-sm: 0 2px 8px rgb(25 45 32 / 4%); --content-padding: 32px;
 }
-

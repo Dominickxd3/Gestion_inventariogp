@@ -1,5 +1,7 @@
 # Inspección inicial · 6 de octubre de 2026
 
+> Corrección posterior de autenticación: la inspección ampliada confirmó que `sp_login_usuario` usa una tabla temporal independiente y no consume `vw_ERP_Usuarios`. Gestión TI autentica ahora mediante una consulta parametrizada y de solo lectura sobre la vista existente, sin modificar el ERP ni el contrato de la vista y sin proyectar `User_PassBin`. La autorización continúa en `DB_GP_GestionTI`.
+
 La carpeta Gestion_inventariogp estaba vacía, sin frontend, backend, SQL, Git ni AGENTS.md en el proyecto o en los directorios padre revisados. No se reemplazó código existente.
 
 Se inspeccionó SQL Server en 10.10.1.6:1433 mediante consultas de solo lectura. La base DB_GP_GestionTI contiene **32 tablas, 8 vistas y 4 procedimientos**. DB_GP_Trabajos_TEST existe en la misma instancia; se revisaron las definiciones de sp_login_usuario y vw_ERP_Usuarios. No se ejecutaron login, sincronización, asignación ni devolución; estos SP modifican datos. No se consultaron contraseñas, User_PassBin ni registros personales.

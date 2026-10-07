@@ -1,0 +1,9 @@
+import { useMutation,useQuery,useQueryClient } from '@tanstack/react-query'; import { asignacionesApi } from '../api/asignaciones.api'; import { AssignmentQuery,CreateAssignment,ReturnAssignment } from '../types/asignaciones.types';
+export const useAsignaciones=(q:AssignmentQuery)=>useQuery({queryKey:['asignaciones',q],queryFn:()=>asignacionesApi.list(q)});
+export const useAsignacion=(id:number)=>useQuery({queryKey:['asignacion',id],queryFn:()=>asignacionesApi.detail(id),enabled:id>0});
+export const useWorkers=(search:string)=>useQuery({queryKey:['trabajadores',search],queryFn:()=>asignacionesApi.workers(search),enabled:search.trim().length>=2});
+export const useAvailableAssets=(search:string)=>useQuery({queryKey:['activos-disponibles',search],queryFn:()=>asignacionesApi.assets(search),enabled:search.trim().length>=1});
+export const useAccessories=(search:string)=>useQuery({queryKey:['accesorios-disponibles',search],queryFn:()=>asignacionesApi.accessories(search),enabled:search.trim().length>=1});
+const invalidate=(qc:ReturnType<typeof useQueryClient>,assetId?:number)=>Promise.all([qc.invalidateQueries({queryKey:['asignaciones']}),qc.invalidateQueries({queryKey:['activos']}),qc.invalidateQueries({queryKey:['activos-disponibles']}),qc.invalidateQueries({queryKey:['accesorios-disponibles']}),qc.invalidateQueries({queryKey:['dashboard']}),...(assetId?[qc.invalidateQueries({queryKey:['activo',assetId]}),qc.invalidateQueries({queryKey:['activo-asignaciones',assetId]})]:[])]);
+export function useCreateAssignment(){const qc=useQueryClient();return useMutation({mutationFn:(d:CreateAssignment)=>asignacionesApi.create(d),onSuccess:x=>invalidate(qc,x.activo.id)});}
+export function useReturnAssignment(id:number){const qc=useQueryClient();return useMutation({mutationFn:(d:ReturnAssignment)=>asignacionesApi.return(id,d),onSuccess:x=>invalidate(qc,x.activo.id)});}
