@@ -1,0 +1,24 @@
+{
+  "name": "gp-gestion-ti",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/backend",
+    "apps/frontend"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "lint": "eslint apps",
+    "test": "npm run test --workspace @gp/backend",
+    "dev:backend": "npm run dev --workspace @gp/backend",
+    "dev:frontend": "npm run dev --workspace @gp/frontend"
+  },
+  "devDependencies": {
+    "eslint": "^9.39.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "typescript-eslint": "^8.57.0"
+  }
+}

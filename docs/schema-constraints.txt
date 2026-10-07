@@ -1,0 +1,141 @@
+﻿accesorios PK_accesorios 1 NULL id_accesorio
+accesorios UX_accesorios_codigo 1 ([codigo] IS NOT NULL) codigo
+activos PK_activos 1 NULL id_activo
+activos UQ_activos_codigo 1 NULL codigo
+activos_celulares PK_activos_celulares 1 NULL id_activo
+activos_celulares UX_activos_celulares_imei1 1 ([imei1] IS NOT NULL) imei1
+activos_celulares UX_activos_celulares_imei2 1 ([imei2] IS NOT NULL) imei2
+activos_computo PK_activos_computo 1 NULL id_activo
+areas PK_areas 1 NULL id_area
+areas UQ_area_sede 1 NULL id_sede
+areas UQ_area_sede 1 NULL nombre
+asignaciones_accesorios PK_asignaciones_accesorios 1 NULL id_asignacion_accesorio
+asignaciones_accesorios UQ_asignacion_accesorio 1 NULL id_asignacion
+asignaciones_accesorios UQ_asignacion_accesorio 1 NULL id_accesorio
+asignaciones_activo PK_asignaciones_activo 1 NULL id_asignacion
+asignaciones_activo UX_asignacion_activo_actual 1 ([activo]=(1)) id_activo
+asignaciones_linea PK_asignaciones_linea 1 NULL id_asignacion_linea
+asignaciones_linea UX_linea_asignacion_actual 1 ([activo]=(1)) id_linea
+auditoria PK_auditoria 1 NULL id_auditoria
+documentos PK_documentos 1 NULL id_documento
+estados_activo PK_estados_activo 1 NULL id_estado_activo
+estados_activo UQ_estados_activo_codigo 1 NULL codigo
+facturas_telefonia PK_facturas_telefonia 1 NULL id_factura
+facturas_telefonia_detalle PK_facturas_telefonia_detalle 1 NULL id_detalle
+facturas_telefonia_detalle UQ_factura_numero_linea 1 NULL id_factura
+facturas_telefonia_detalle UQ_factura_numero_linea 1 NULL numero_linea
+financiamientos_cuotas PK_financiamientos_cuotas 1 NULL id_cuota
+financiamientos_cuotas UQ_financiamiento_cuota 1 NULL id_financiamiento
+financiamientos_cuotas UQ_financiamiento_cuota 1 NULL numero_cuota
+financiamientos_equipo PK_financiamientos_equipo 1 NULL id_financiamiento
+incidentes PK_incidentes 1 NULL id_incidente
+inventario_detalle PK_inventario_detalle 1 NULL id_inventario_detalle
+inventario_detalle UQ_inventario_activo 1 NULL id_inventario
+inventario_detalle UQ_inventario_activo 1 NULL id_activo
+inventarios PK_inventarios 1 NULL id_inventario
+linea_equipo_historial PK_linea_equipo_historial 1 NULL id_linea_equipo
+linea_equipo_historial UX_equipo_linea_actual 1 ([activo]=(1)) id_activo
+linea_equipo_historial UX_linea_equipo_actual 1 ([activo]=(1)) id_linea
+lineas_moviles PK_lineas_moviles 1 NULL id_linea
+lineas_moviles UQ_linea_numero 1 NULL numero
+mantenimientos PK_mantenimientos 1 NULL id_mantenimiento
+movimientos_activo PK_movimientos_activo 1 NULL id_movimiento
+operadores_moviles PK_operadores_moviles 1 NULL id_operador
+operadores_moviles UQ_operador_nombre 1 NULL nombre
+permisos PK_permisos 1 NULL id_permiso
+permisos UQ_permisos_codigo 1 NULL codigo
+planes_moviles PK_planes_moviles 1 NULL id_plan
+planes_moviles UQ_plan_operador 1 NULL id_operador
+planes_moviles UQ_plan_operador 1 NULL nombre
+rol_permisos PK_rol_permisos 1 NULL id_rol
+rol_permisos PK_rol_permisos 1 NULL id_permiso
+roles PK_roles 1 NULL id_rol
+roles UQ_roles_codigo 1 NULL codigo
+roles UQ_roles_nombre 1 NULL nombre
+sedes PK_sedes 1 NULL id_sede
+sedes UQ_sedes_codigo 1 NULL codigo
+tipos_activo PK_tipos_activo 1 NULL id_tipo_activo
+tipos_activo UQ_tipos_activo_nombre 1 NULL nombre
+trabajadores PK_trabajadores 1 NULL id_trabajador
+trabajadores UX_trabajadores_dni 1 ([dni] IS NOT NULL) dni
+trabajadores UX_trabajadores_erp 1 ([id_traba_erp] IS NOT NULL) id_traba_erp
+ubicaciones PK_ubicaciones 1 NULL id_ubicacion
+usuarios_sistema PK_usuarios_sistema 1 NULL id_usuario_sistema
+usuarios_sistema UQ_usuarios_sistema_logon 1 NULL user_logon
+facturas_telefonia CK_factura_periodo ([periodo_fin]>=[periodo_inicio])
+facturas_telefonia CK_factura_estado ([estado_conciliacion]='CERRADO' OR [estado_conciliacion]='CONCILIADO' OR [estado_conciliacion]='EN_REVISION' OR [estado_conciliacion]='PENDIENTE')
+facturas_telefonia_detalle CK_factura_detalle_estado ([estado_conciliacion]='CORREGIDO' OR [estado_conciliacion]='OBSERVADO' OR [estado_conciliacion]='CONFORME' OR [estado_conciliacion]='PENDIENTE')
+financiamientos_equipo CK_financiamiento_estado ([estado]='CANCELADO' OR [estado]='PAGADO' OR [estado]='ACTIVO')
+financiamientos_equipo CK_financiamiento_cuotas ([cantidad_cuotas] IS NULL OR [cantidad_cuotas]>(0))
+financiamientos_cuotas CK_financiamiento_cuota_estado ([estado]='CANCELADA' OR [estado]='PAGADA' OR [estado]='FACTURADA' OR [estado]='PENDIENTE')
+mantenimientos CK_mantenimiento_tipo ([tipo]='CORRECTIVO' OR [tipo]='PREVENTIVO')
+mantenimientos CK_mantenimiento_estado ([estado]='CANCELADO' OR [estado]='FINALIZADO' OR [estado]='EN_PROCESO' OR [estado]='PENDIENTE')
+incidentes CK_incidente_tipo ([tipo]='OTRO' OR [tipo]='FALLA' OR [tipo]='HURTO' OR [tipo]='ROBO' OR [tipo]='PERDIDA' OR [tipo]='DAÑO')
+incidentes CK_incidente_estado ([estado]='CERRADO' OR [estado]='RESUELTO' OR [estado]='EN_PROCESO' OR [estado]='ABIERTO')
+trabajadores CK_trabajadores_estado ([estado]='SUSPENDIDO' OR [estado]='CESADO' OR [estado]='ACTIVO')
+inventarios CK_inventario_estado ([estado]='CANCELADO' OR [estado]='FINALIZADO' OR [estado]='EN_PROCESO' OR [estado]='ABIERTO')
+inventario_detalle CK_inventario_verificacion ([estado_verificacion]='OBSERVADO' OR [estado_verificacion]='CAMBIO_UBICACION' OR [estado_verificacion]='NO_ENCONTRADO' OR [estado_verificacion]='ENCONTRADO' OR [estado_verificacion]='PENDIENTE')
+accesorios CK_accesorios_estado ([estado]='BAJA' OR [estado]='PERDIDO' OR [estado]='MALOGRADO' OR [estado]='ASIGNADO' OR [estado]='DISPONIBLE')
+lineas_moviles CK_linea_estado ([estado]='PERDIDA' OR [estado]='ROBADA' OR [estado]='BAJA' OR [estado]='SUSPENDIDA' OR [estado]='DISPONIBLE' OR [estado]='ACTIVA')
+facturas_telefonia FK_factura_operador operadores_moviles
+facturas_telefonia FK_factura_usuario_importacion usuarios_sistema
+facturas_telefonia FK_factura_usuario_cierre usuarios_sistema
+facturas_telefonia_detalle FK_factura_detalle_factura facturas_telefonia
+facturas_telefonia_detalle FK_factura_detalle_linea lineas_moviles
+financiamientos_equipo FK_financiamiento_activo activos
+financiamientos_equipo FK_financiamiento_operador operadores_moviles
+rol_permisos FK_rol_permisos_rol roles
+rol_permisos FK_rol_permisos_permiso permisos
+financiamientos_cuotas FK_cuota_financiamiento financiamientos_equipo
+financiamientos_cuotas FK_cuota_factura facturas_telefonia
+usuarios_sistema FK_usuarios_sistema_rol roles
+mantenimientos FK_mantenimiento_activo activos
+mantenimientos FK_mantenimiento_usuario usuarios_sistema
+incidentes FK_incidente_activo activos
+areas FK_areas_sede sedes
+incidentes FK_incidente_trabajador trabajadores
+incidentes FK_incidente_usuario usuarios_sistema
+ubicaciones FK_ubicaciones_sede sedes
+ubicaciones FK_ubicaciones_area areas
+documentos FK_documento_activo activos
+documentos FK_documento_asignacion asignaciones_activo
+documentos FK_documento_trabajador trabajadores
+documentos FK_documento_usuario usuarios_sistema
+trabajadores FK_trabajadores_area areas
+inventarios FK_inventario_sede sedes
+inventarios FK_inventario_usuario usuarios_sistema
+inventario_detalle FK_inventario_detalle_inventario inventarios
+inventario_detalle FK_inventario_detalle_activo activos
+inventario_detalle FK_inventario_ubicacion_esperada ubicaciones
+inventario_detalle FK_inventario_ubicacion_encontrada ubicaciones
+activos FK_activos_tipo tipos_activo
+inventario_detalle FK_inventario_usuario_verificacion usuarios_sistema
+activos FK_activos_estado estados_activo
+activos FK_activos_ubicacion ubicaciones
+activos_computo FK_activos_computo_activo activos
+movimientos_activo FK_movimiento_activo activos
+movimientos_activo FK_movimiento_trabajador_origen trabajadores
+movimientos_activo FK_movimiento_trabajador_destino trabajadores
+activos_celulares FK_activos_celulares_activo activos
+movimientos_activo FK_movimiento_ubicacion_origen ubicaciones
+movimientos_activo FK_movimiento_ubicacion_destino ubicaciones
+movimientos_activo FK_movimiento_usuario usuarios_sistema
+auditoria FK_auditoria_usuario usuarios_sistema
+asignaciones_activo FK_asignacion_activo activos
+asignaciones_activo FK_asignacion_trabajador trabajadores
+asignaciones_activo FK_asignacion_usuario_entrega usuarios_sistema
+asignaciones_activo FK_asignacion_usuario_devolucion usuarios_sistema
+asignaciones_accesorios FK_asignacion_accesorio_asignacion asignaciones_activo
+asignaciones_accesorios FK_asignacion_accesorio_accesorio accesorios
+planes_moviles FK_planes_operador operadores_moviles
+lineas_moviles FK_linea_operador operadores_moviles
+lineas_moviles FK_linea_plan planes_moviles
+asignaciones_linea FK_asignacion_linea_linea lineas_moviles
+asignaciones_linea FK_asignacion_linea_trabajador trabajadores
+asignaciones_linea FK_asignacion_linea_usuario usuarios_sistema
+linea_equipo_historial FK_linea_equipo_linea lineas_moviles
+linea_equipo_historial FK_linea_equipo_activo activos
+linea_equipo_historial FK_linea_equipo_usuario usuarios_sistema
+32
+8
+4

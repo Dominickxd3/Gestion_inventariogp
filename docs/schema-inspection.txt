@@ -1,0 +1,1445 @@
+dbo accesorios 1 id_accesorio int 4 10 0 0 1 NULL
+dbo accesorios 2 codigo varchar 50 0 0 1 0 NULL
+dbo accesorios 3 tipo varchar 100 0 0 0 0 NULL
+dbo accesorios 4 marca varchar 150 0 0 1 0 NULL
+dbo accesorios 5 modelo varchar 150 0 0 1 0 NULL
+dbo accesorios 6 numero_serie varchar 200 0 0 1 0 NULL
+dbo accesorios 7 descripcion varchar 500 0 0 1 0 NULL
+dbo accesorios 8 estado varchar 30 0 0 0 0 ('DISPONIBLE')
+dbo accesorios 9 fecha_creacion datetime2 8 27 7 0 0 (sysdatetime())
+dbo activos 1 id_activo int 4 10 0 0 1 NULL
+dbo activos 2 codigo varchar 50 0 0 0 0 NULL
+dbo activos 3 id_tipo_activo int 4 10 0 0 0 NULL
+dbo activos 4 id_estado_activo int 4 10 0 0 0 NULL
+dbo activos 5 id_ubicacion int 4 10 0 1 0 NULL
+dbo activos 6 marca varchar 150 0 0 1 0 NULL
+dbo activos 7 modelo varchar 200 0 0 1 0 NULL
+dbo activos 8 numero_serie varchar 200 0 0 1 0 NULL
+dbo activos 9 color varchar 100 0 0 1 0 NULL
+dbo activos 10 fecha_compra date 3 10 0 1 0 NULL
+dbo activos 11 fecha_garantia_hasta date 3 10 0 1 0 NULL
+dbo activos 12 proveedor varchar 200 0 0 1 0 NULL
+dbo activos 13 costo_compra decimal 9 14 2 1 0 NULL
+dbo activos 14 propiedad_empresa bit 1 1 0 0 0 ((1))
+dbo activos 15 observaciones varchar 1500 0 0 1 0 NULL
+dbo activos 16 fecha_creacion datetime2 8 27 7 0 0 (sysdatetime())
+dbo activos 17 fecha_actualizacion datetime2 8 27 7 1 0 NULL
+dbo activos_celulares 1 id_activo int 4 10 0 0 0 NULL
+dbo activos_celulares 2 imei1 varchar 30 0 0 1 0 NULL
+dbo activos_celulares 3 imei2 varchar 30 0 0 1 0 NULL
+dbo activos_celulares 4 ram_gb int 4 10 0 1 0 NULL
+dbo activos_celulares 5 almacenamiento_gb int 4 10 0 1 0 NULL
+dbo activos_celulares 6 sistema_operativo varchar 150 0 0 1 0 NULL
+dbo activos_computo 1 id_activo int 4 10 0 0 0 NULL
+dbo activos_computo 2 hostname varchar 150 0 0 1 0 NULL
+dbo activos_computo 3 direccion_ip varchar 45 0 0 1 0 NULL
+dbo activos_computo 4 direccion_mac varchar 50 0 0 1 0 NULL
+dbo activos_computo 5 procesador varchar 250 0 0 1 0 NULL
+dbo activos_computo 6 ram_gb decimal 5 8 2 1 0 NULL
+dbo activos_computo 7 almacenamiento_tipo varchar 100 0 0 1 0 NULL
+dbo activos_computo 8 almacenamiento_gb int 4 10 0 1 0 NULL
+dbo activos_computo 9 sistema_operativo varchar 200 0 0 1 0 NULL
+dbo activos_computo 10 arquitectura varchar 50 0 0 1 0 NULL
+dbo activos_computo 11 usuario_windows varchar 150 0 0 1 0 NULL
+dbo activos_computo 12 dominio varchar 150 0 0 1 0 NULL
+dbo areas 1 id_area int 4 10 0 0 1 NULL
+dbo areas 2 id_sede int 4 10 0 0 0 NULL
+dbo areas 3 nombre varchar 150 0 0 0 0 NULL
+dbo areas 4 descripcion varchar 300 0 0 1 0 NULL
+dbo areas 5 estado bit 1 1 0 0 0 ((1))
+dbo areas 6 fecha_creacion datetime2 8 27 7 0 0 (sysdatetime())
+dbo asignaciones_accesorios 1 id_asignacion_accesorio int 4 10 0 0 1 NULL
+dbo asignaciones_accesorios 2 id_asignacion int 4 10 0 0 0 NULL
+dbo asignaciones_accesorios 3 id_accesorio int 4 10 0 0 0 NULL
+dbo asignaciones_accesorios 4 estado_entrega varchar 150 0 0 1 0 NULL
+dbo asignaciones_accesorios 5 estado_devolucion varchar 150 0 0 1 0 NULL
+dbo asignaciones_accesorios 6 devuelto bit 1 1 0 0 0 ((0))
+dbo asignaciones_accesorios 7 observaciones varchar 500 0 0 1 0 NULL
+dbo asignaciones_activo 1 id_asignacion int 4 10 0 0 1 NULL
+dbo asignaciones_activo 2 id_activo int 4 10 0 0 0 NULL
+dbo asignaciones_activo 3 id_trabajador int 4 10 0 0 0 NULL
+dbo asignaciones_activo 4 fecha_entrega datetime2 8 27 7 0 0 (sysdatetime())
+dbo asignaciones_activo 5 fecha_devolucion datetime2 8 27 7 1 0 NULL
+dbo asignaciones_activo 6 estado_entrega varchar 150 0 0 1 0 NULL
+dbo asignaciones_activo 7 estado_devolucion varchar 150 0 0 1 0 NULL
+dbo asignaciones_activo 8 motivo_entrega varchar 300 0 0 1 0 NULL
+dbo asignaciones_activo 9 motivo_devolucion varchar 300 0 0 1 0 NULL
+dbo asignaciones_activo 10 observacion_entrega varchar 1500 0 0 1 0 NULL
+dbo asignaciones_activo 11 observacion_devolucion varchar 1500 0 0 1 0 NULL
+dbo asignaciones_activo 12 activo bit 1 1 0 0 0 ((1))
+dbo asignaciones_activo 13 usuario_entrega int 4 10 0 1 0 NULL
+dbo asignaciones_activo 14 usuario_devolucion int 4 10 0 1 0 NULL
+dbo asignaciones_activo 15 fecha_creacion datetime2 8 27 7 0 0 (sysdatetime())
+dbo asignaciones_linea 1 id_asignacion_linea int 4 10 0 0 1 NULL
+dbo asignaciones_linea 2 id_linea int 4 10 0 0 0 NULL
+dbo asignaciones_linea 3 id_trabajador int 4 10 0 0 0 NULL
+dbo asignaciones_linea 4 fecha_inicio datetime2 8 27 7 0 0 (sysdatetime())
+dbo asignaciones_linea 5 fecha_fin datetime2 8 27 7 1 0 NULL
+dbo asignaciones_linea 6 motivo varchar 300 0 0 1 0 NULL
+dbo asignaciones_linea 7 observaciones varchar 700 0 0 1 0 NULL
+dbo asignaciones_linea 8 activo bit 1 1 0 0 0 ((1))
+dbo asignaciones_linea 9 usuario_registro int 4 10 0 1 0 NULL
+dbo auditoria 1 id_auditoria bigint 8 19 0 0 1 NULL
+dbo auditoria 2 id_usuario int 4 10 0 1 0 NULL
+dbo auditoria 3 modulo varchar 150 0 0 0 0 NULL
+dbo auditoria 4 accion varchar 100 0 0 0 0 NULL
+dbo auditoria 5 tabla_afectada varchar 150 0 0 1 0 NULL
+dbo auditoria 6 registro_id varchar 100 0 0 1 0 NULL
+dbo auditoria 7 datos_anteriores nvarchar -1 0 0 1 0 NULL
+dbo auditoria 8 datos_nuevos nvarchar -1 0 0 1 0 NULL
+dbo auditoria 9 direccion_ip varchar 45 0 0 1 0 NULL
+dbo auditoria 10 fecha datetime2 8 27 7 0 0 (sysdatetime())
+dbo documentos 1 id_documento int 4 10 0 0 1 NULL
+dbo documentos 2 tipo_documento varchar 100 0 0 0 0 NULL
+dbo documentos 3 id_activo int 4 10 0 1 0 NULL
+dbo documentos 4 id_asignacion int 4 10 0 1 0 NULL
+dbo documentos 5 id_trabajador int 4 10 0 1 0 NULL
+dbo documentos 6 nombre_archivo varchar 300 0 0 0 0 NULL
+dbo documentos 7 ruta_archivo varchar 1200 0 0 0 0 NULL
+dbo documentos 8 hash_archivo varchar 128 0 0 1 0 NULL
+dbo documentos 9 fecha_documento datetime2 8 27 7 1 0 NULL
+dbo documentos 10 fecha_registro datetime2 8 27 7 0 0 (sysdatetime())
+dbo documentos 11 usuario_registro int 4 10 0 1 0 NULL
+dbo documentos 12 observaciones varchar 700 0 0 1 0 NULL
+dbo estados_activo 1 id_estado_activo int 4 10 0 0 1 NULL
+dbo estados_activo 2 codigo varchar 50 0 0 0 0 NULL
+dbo estados_activo 3 nombre varchar 100 0 0 0 0 NULL
+dbo estados_activo 4 es_operativo bit 1 1 0 0 0 ((1))
+dbo facturas_telefonia 1 id_factura int 4 10 0 0 1 NULL
+dbo facturas_telefonia 2 id_operador int 4 10 0 0 0 NULL
+dbo facturas_telefonia 3 numero_factura varchar 100 0 0 1 0 NULL
+dbo facturas_telefonia 4 numero_cuenta varchar 100 0 0 1 0 NULL
+dbo facturas_telefonia 5 fecha_emision date 3 10 0 0 0 NULL
+dbo facturas_telefonia 6 periodo_inicio date 3 10 0 0 0 NULL
+dbo facturas_telefonia 7 periodo_fin date 3 10 0 0 0 NULL
+dbo facturas_telefonia 8 fecha_vencimiento date 3 10 0 1 0 NULL
+dbo facturas_telefonia 9 monto_total decimal 9 14 2 0 0 NULL
+dbo facturas_telefonia 10 archivo_pdf varchar 1000 0 0 1 0 NULL
+dbo facturas_telefonia 11 estado_conciliacion varchar 30 0 0 0 0 ('PENDIENTE')
+dbo facturas_telefonia 12 fecha_importacion datetime2 8 27 7 0 0 (sysdatetime())
+dbo facturas_telefonia 13 fecha_cierre datetime2 8 27 7 1 0 NULL
+dbo facturas_telefonia 14 usuario_importacion int 4 10 0 1 0 NULL
+dbo facturas_telefonia 15 usuario_cierre int 4 10 0 1 0 NULL
+dbo facturas_telefonia 16 observaciones varchar 1500 0 0 1 0 NULL
+dbo facturas_telefonia_detalle 1 id_detalle int 4 10 0 0 1 NULL
+dbo facturas_telefonia_detalle 2 id_factura int 4 10 0 0 0 NULL
+dbo facturas_telefonia_detalle 3 id_linea int 4 10 0 1 0 NULL
+dbo facturas_telefonia_detalle 4 numero_linea varchar 20 0 0 0 0 NULL
+dbo facturas_telefonia_detalle 5 nombre_plan varchar 200 0 0 1 0 NULL
+dbo facturas_telefonia_detalle 6 cargo_plan decimal 9 12 2 0 0 ((0))
+dbo facturas_telefonia_detalle 7 prorrateo decimal 9 12 2 0 0 ((0))
+dbo facturas_telefonia_detalle 8 cargos_adicionales decimal 9 12 2 0 0 ((0))
+dbo facturas_telefonia_detalle 9 descuentos decimal 9 12 2 0 0 ((0))
+dbo facturas_telefonia_detalle 10 cargo_equipos decimal 9 12 2 0 0 ((0))
+dbo facturas_telefonia_detalle 11 saldo_anterior decimal 9 12 2 0 0 ((0))
+dbo facturas_telefonia_detalle 12 monto_total decimal 9 12 2 0 0 ((0))
+dbo facturas_telefonia_detalle 13 estado_conciliacion varchar 30 0 0 0 0 ('PENDIENTE')
+dbo facturas_telefonia_detalle 14 observaciones varchar 700 0 0 1 0 NULL
+dbo financiamientos_cuotas 1 id_cuota int 4 10 0 0 1 NULL
+dbo financiamientos_cuotas 2 id_financiamiento int 4 10 0 0 0 NULL
+dbo financiamientos_cuotas 3 numero_cuota int 4 10 0 0 0 NULL
+dbo financiamientos_cuotas 4 fecha_facturacion date 3 10 0 1 0 NULL
+dbo financiamientos_cuotas 5 monto decimal 9 12 2 0 0 NULL
+dbo financiamientos_cuotas 6 id_factura int 4 10 0 1 0 NULL
+dbo financiamientos_cuotas 7 estado varchar 30 0 0 0 0 ('PENDIENTE')
+dbo financiamientos_equipo 1 id_financiamiento int 4 10 0 0 1 NULL
+dbo financiamientos_equipo 2 id_activo int 4 10 0 0 0 NULL
+dbo financiamientos_equipo 3 id_operador int 4 10 0 1 0 NULL
+dbo financiamientos_equipo 4 numero_folio varchar 150 0 0 1 0 NULL
+dbo financiamientos_equipo 5 fecha_inicio date 3 10 0 1 0 NULL
+dbo financiamientos_equipo 6 cantidad_cuotas int 4 10 0 1 0 NULL
+dbo financiamientos_equipo 7 monto_cuota decimal 9 12 2 1 0 NULL
+dbo financiamientos_equipo 8 monto_total decimal 9 14 2 1 0 NULL
+dbo financiamientos_equipo 9 estado varchar 30 0 0 0 0 ('ACTIVO')
+dbo financiamientos_equipo 10 observaciones varchar 700 0 0 1 0 NULL
+dbo incidentes 1 id_incidente int 4 10 0 0 1 NULL
+dbo incidentes 2 id_activo int 4 10 0 0 0 NULL
+dbo incidentes 3 id_trabajador int 4 10 0 1 0 NULL
+dbo incidentes 4 tipo varchar 50 0 0 0 0 NULL
+dbo incidentes 5 fecha_incidente datetime2 8 27 7 0 0 (sysdatetime())
+dbo incidentes 6 descripcion varchar 2000 0 0 0 0 NULL
+dbo incidentes 7 estado varchar 30 0 0 0 0 ('ABIERTO')
+dbo incidentes 8 solucion varchar 2000 0 0 1 0 NULL
+dbo incidentes 9 fecha_cierre datetime2 8 27 7 1 0 NULL
+dbo incidentes 10 usuario_registro int 4 10 0 1 0 NULL
+dbo inventario_detalle 1 id_inventario_detalle int 4 10 0 0 1 NULL
+dbo inventario_detalle 2 id_inventario int 4 10 0 0 0 NULL
+dbo inventario_detalle 3 id_activo int 4 10 0 0 0 NULL
+dbo inventario_detalle 4 id_ubicacion_esperada int 4 10 0 1 0 NULL
+dbo inventario_detalle 5 id_ubicacion_encontrada int 4 10 0 1 0 NULL
+dbo inventario_detalle 6 estado_verificacion varchar 30 0 0 0 0 ('PENDIENTE')
+dbo inventario_detalle 7 fecha_verificacion datetime2 8 27 7 1 0 NULL
+dbo inventario_detalle 8 usuario_verificacion int 4 10 0 1 0 NULL
+dbo inventario_detalle 9 observaciones varchar 700 0 0 1 0 NULL
+dbo inventarios 1 id_inventario int 4 10 0 0 1 NULL
+dbo inventarios 2 nombre varchar 200 0 0 0 0 NULL
+dbo inventarios 3 id_sede int 4 10 0 1 0 NULL
+dbo inventarios 4 fecha_inicio datetime2 8 27 7 0 0 (sysdatetime())
+dbo inventarios 5 fecha_fin datetime2 8 27 7 1 0 NULL
+dbo inventarios 6 estado varchar 30 0 0 0 0 ('ABIERTO')
+dbo inventarios 7 observaciones varchar 1500 0 0 1 0 NULL
+dbo inventarios 8 usuario_registro int 4 10 0 1 0 NULL
+dbo linea_equipo_historial 1 id_linea_equipo int 4 10 0 0 1 NULL
+dbo linea_equipo_historial 2 id_linea int 4 10 0 0 0 NULL
+dbo linea_equipo_historial 3 id_activo int 4 10 0 0 0 NULL
+dbo linea_equipo_historial 4 fecha_inicio datetime2 8 27 7 0 0 (sysdatetime())
+dbo linea_equipo_historial 5 fecha_fin datetime2 8 27 7 1 0 NULL
+dbo linea_equipo_historial 6 activo bit 1 1 0 0 0 ((1))
+dbo linea_equipo_historial 7 observaciones varchar 700 0 0 1 0 NULL
+dbo linea_equipo_historial 8 usuario_registro int 4 10 0 1 0 NULL
+dbo lineas_moviles 1 id_linea int 4 10 0 0 1 NULL
+dbo lineas_moviles 2 numero varchar 20 0 0 0 0 NULL
+dbo lineas_moviles 3 id_operador int 4 10 0 0 0 NULL
+dbo lineas_moviles 4 id_plan_actual int 4 10 0 1 0 NULL
+dbo lineas_moviles 5 iccid varchar 50 0 0 1 0 NULL
+dbo lineas_moviles 6 estado varchar 30 0 0 0 0 ('ACTIVA')
+dbo lineas_moviles 7 fecha_alta date 3 10 0 1 0 NULL
+dbo lineas_moviles 8 fecha_baja date 3 10 0 1 0 NULL
+dbo lineas_moviles 9 observaciones varchar 1000 0 0 1 0 NULL
+dbo lineas_moviles 10 fecha_creacion datetime2 8 27 7 0 0 (sysdatetime())
+dbo lineas_moviles 11 fecha_actualizacion datetime2 8 27 7 1 0 NULL
+dbo mantenimientos 1 id_mantenimiento int 4 10 0 0 1 NULL
+dbo mantenimientos 2 id_activo int 4 10 0 0 0 NULL
+dbo mantenimientos 3 tipo varchar 30 0 0 0 0 NULL
+dbo mantenimientos 4 fecha_programada date 3 10 0 1 0 NULL
+dbo mantenimientos 5 fecha_inicio datetime2 8 27 7 1 0 NULL
+dbo mantenimientos 6 fecha_fin datetime2 8 27 7 1 0 NULL
+dbo mantenimientos 7 problema_reportado varchar 1500 0 0 1 0 NULL
+dbo mantenimientos 8 diagnostico varchar 1500 0 0 1 0 NULL
+dbo mantenimientos 9 trabajo_realizado varchar 2500 0 0 1 0 NULL
+dbo mantenimientos 10 costo decimal 9 12 2 1 0 NULL
+dbo mantenimientos 11 proveedor varchar 200 0 0 1 0 NULL
+dbo mantenimientos 12 estado varchar 30 0 0 0 0 ('PENDIENTE')
+dbo mantenimientos 13 proximo_mantenimiento date 3 10 0 1 0 NULL
+dbo mantenimientos 14 observaciones varchar 1500 0 0 1 0 NULL
+dbo mantenimientos 15 usuario_registro int 4 10 0 1 0 NULL
+dbo movimientos_activo 1 id_movimiento bigint 8 19 0 0 1 NULL
+dbo movimientos_activo 2 id_activo int 4 10 0 0 0 NULL
+dbo movimientos_activo 3 tipo_movimiento varchar 100 0 0 0 0 NULL
+dbo movimientos_activo 4 fecha_movimiento datetime2 8 27 7 0 0 (sysdatetime())
+dbo movimientos_activo 5 id_trabajador_origen int 4 10 0 1 0 NULL
+dbo movimientos_activo 6 id_trabajador_destino int 4 10 0 1 0 NULL
+dbo movimientos_activo 7 id_ubicacion_origen int 4 10 0 1 0 NULL
+dbo movimientos_activo 8 id_ubicacion_destino int 4 10 0 1 0 NULL
+dbo movimientos_activo 9 descripcion varchar 1500 0 0 1 0 NULL
+dbo movimientos_activo 10 id_usuario int 4 10 0 1 0 NULL
+dbo operadores_moviles 1 id_operador int 4 10 0 0 1 NULL
+dbo operadores_moviles 2 nombre varchar 100 0 0 0 0 NULL
+dbo operadores_moviles 3 estado bit 1 1 0 0 0 ((1))
+dbo permisos 1 id_permiso int 4 10 0 0 1 NULL
+dbo permisos 2 codigo varchar 100 0 0 0 0 NULL
+dbo permisos 3 nombre varchar 150 0 0 0 0 NULL
+dbo permisos 4 modulo varchar 100 0 0 0 0 NULL
+dbo permisos 5 descripcion varchar 300 0 0 1 0 NULL
+dbo permisos 6 estado bit 1 1 0 0 0 ((1))
+dbo planes_moviles 1 id_plan int 4 10 0 0 1 NULL
+dbo planes_moviles 2 id_operador int 4 10 0 0 0 NULL
+dbo planes_moviles 3 nombre varchar 200 0 0 0 0 NULL
+dbo planes_moviles 4 precio_lista decimal 9 12 2 1 0 NULL
+dbo planes_moviles 5 descripcion varchar 500 0 0 1 0 NULL
+dbo planes_moviles 6 estado bit 1 1 0 0 0 ((1))
+dbo rol_permisos 1 id_rol int 4 10 0 0 0 NULL
+dbo rol_permisos 2 id_permiso int 4 10 0 0 0 NULL
+dbo roles 1 id_rol int 4 10 0 0 1 NULL
+dbo roles 2 codigo varchar 50 0 0 0 0 NULL
+dbo roles 3 nombre varchar 100 0 0 0 0 NULL
+dbo roles 4 descripcion varchar 300 0 0 1 0 NULL
+dbo roles 5 estado bit 1 1 0 0 0 ((1))
+dbo roles 6 fecha_creacion datetime2 8 27 7 0 0 (sysdatetime())
+dbo sedes 1 id_sede int 4 10 0 0 1 NULL
+dbo sedes 2 codigo varchar 30 0 0 0 0 NULL
+dbo sedes 3 nombre varchar 150 0 0 0 0 NULL
+dbo sedes 4 direccion varchar 300 0 0 1 0 NULL
+dbo sedes 5 estado bit 1 1 0 0 0 ((1))
+dbo sedes 6 fecha_creacion datetime2 8 27 7 0 0 (sysdatetime())
+dbo tipos_activo 1 id_tipo_activo int 4 10 0 0 1 NULL
+dbo tipos_activo 2 nombre varchar 100 0 0 0 0 NULL
+dbo tipos_activo 3 descripcion varchar 300 0 0 1 0 NULL
+dbo tipos_activo 4 estado bit 1 1 0 0 0 ((1))
+dbo trabajadores 1 id_trabajador int 4 10 0 0 1 NULL
+dbo trabajadores 2 id_traba_erp int 4 10 0 1 0 NULL
+dbo trabajadores 3 dni varchar 12 0 0 1 0 NULL
+dbo trabajadores 4 nombres varchar 150 0 0 0 0 NULL
+dbo trabajadores 5 apellidos varchar 200 0 0 1 0 NULL
+dbo trabajadores 6 cargo varchar 200 0 0 1 0 NULL
+dbo trabajadores 7 id_area int 4 10 0 1 0 NULL
+dbo trabajadores 8 correo varchar 200 0 0 1 0 NULL
+dbo trabajadores 9 estado varchar 30 0 0 0 0 ('ACTIVO')
+dbo trabajadores 10 fecha_ingreso date 3 10 0 1 0 NULL
+dbo trabajadores 11 fecha_cese date 3 10 0 1 0 NULL
+dbo trabajadores 12 fecha_creacion datetime2 8 27 7 0 0 (sysdatetime())
+dbo trabajadores 13 fecha_actualizacion datetime2 8 27 7 1 0 NULL
+dbo ubicaciones 1 id_ubicacion int 4 10 0 0 1 NULL
+dbo ubicaciones 2 id_sede int 4 10 0 0 0 NULL
+dbo ubicaciones 3 id_area int 4 10 0 1 0 NULL
+dbo ubicaciones 4 piso varchar 50 0 0 1 0 NULL
+dbo ubicaciones 5 zona varchar 150 0 0 1 0 NULL
+dbo ubicaciones 6 puesto varchar 150 0 0 1 0 NULL
+dbo ubicaciones 7 descripcion varchar 300 0 0 1 0 NULL
+dbo ubicaciones 8 estado bit 1 1 0 0 0 ((1))
+dbo ubicaciones 9 fecha_creacion datetime2 8 27 7 0 0 (sysdatetime())
+dbo usuarios_sistema 1 id_usuario_sistema int 4 10 0 0 1 NULL
+dbo usuarios_sistema 2 user_logon varchar 100 0 0 0 0 NULL
+dbo usuarios_sistema 3 user_fullname varchar 250 0 0 1 0 NULL
+dbo usuarios_sistema 4 user_email varchar 250 0 0 1 0 NULL
+dbo usuarios_sistema 5 user_estado_erp int 4 10 0 1 0 NULL
+dbo usuarios_sistema 6 id_rol int 4 10 0 1 0 NULL
+dbo usuarios_sistema 7 permitir_acceso bit 1 1 0 0 0 ((0))
+dbo usuarios_sistema 8 estado_local bit 1 1 0 0 0 ((1))
+dbo usuarios_sistema 9 ultima_sincronizacion datetime2 8 27 7 1 0 NULL
+dbo usuarios_sistema 10 ultimo_acceso datetime2 8 27 7 1 0 NULL
+dbo usuarios_sistema 11 fecha_creacion datetime2 8 27 7 0 0 (sysdatetime())
+dbo usuarios_sistema 12 fecha_actualizacion datetime2 8 27 7 1 0 NULL
+dbo usuarios_sistema 13 observaciones varchar 500 0 0 1 0 NULL
+dbo vw_activos_asignados 1 id_activo int 4 10 0 0 0 NULL
+dbo vw_activos_asignados 2 codigo varchar 50 0 0 0 0 NULL
+dbo vw_activos_asignados 3 tipo_activo varchar 100 0 0 0 0 NULL
+dbo vw_activos_asignados 4 estado_activo varchar 100 0 0 0 0 NULL
+dbo vw_activos_asignados 5 marca varchar 150 0 0 1 0 NULL
+dbo vw_activos_asignados 6 modelo varchar 200 0 0 1 0 NULL
+dbo vw_activos_asignados 7 numero_serie varchar 200 0 0 1 0 NULL
+dbo vw_activos_asignados 8 id_asignacion int 4 10 0 0 0 NULL
+dbo vw_activos_asignados 9 fecha_entrega datetime2 8 27 7 0 0 NULL
+dbo vw_activos_asignados 10 id_trabajador int 4 10 0 0 0 NULL
+dbo vw_activos_asignados 11 dni varchar 12 0 0 1 0 NULL
+dbo vw_activos_asignados 12 trabajador varchar 351 0 0 1 0 NULL
+dbo vw_activos_asignados 13 area varchar 150 0 0 1 0 NULL
+dbo vw_activos_asignados 14 sede varchar 150 0 0 1 0 NULL
+dbo vw_conciliacion_lineas 1 id_factura int 4 10 0 0 0 NULL
+dbo vw_conciliacion_lineas 2 numero_factura varchar 100 0 0 1 0 NULL
+dbo vw_conciliacion_lineas 3 periodo_inicio date 3 10 0 0 0 NULL
+dbo vw_conciliacion_lineas 4 periodo_fin date 3 10 0 0 0 NULL
+dbo vw_conciliacion_lineas 5 numero_linea varchar 20 0 0 0 0 NULL
+dbo vw_conciliacion_lineas 6 nombre_plan varchar 200 0 0 1 0 NULL
+dbo vw_conciliacion_lineas 7 cargo_plan decimal 9 12 2 0 0 NULL
+dbo vw_conciliacion_lineas 8 prorrateo decimal 9 12 2 0 0 NULL
+dbo vw_conciliacion_lineas 9 cargos_adicionales decimal 9 12 2 0 0 NULL
+dbo vw_conciliacion_lineas 10 descuentos decimal 9 12 2 0 0 NULL
+dbo vw_conciliacion_lineas 11 cargo_equipos decimal 9 12 2 0 0 NULL
+dbo vw_conciliacion_lineas 12 monto_total decimal 9 12 2 0 0 NULL
+dbo vw_conciliacion_lineas 13 id_linea int 4 10 0 1 0 NULL
+dbo vw_conciliacion_lineas 14 id_trabajador int 4 10 0 1 0 NULL
+dbo vw_conciliacion_lineas 15 trabajador varchar 351 0 0 1 0 NULL
+dbo vw_conciliacion_lineas 16 id_activo int 4 10 0 1 0 NULL
+dbo vw_conciliacion_lineas 17 codigo_equipo varchar 50 0 0 1 0 NULL
+dbo vw_conciliacion_lineas 18 marca varchar 150 0 0 1 0 NULL
+dbo vw_conciliacion_lineas 19 modelo varchar 200 0 0 1 0 NULL
+dbo vw_conciliacion_lineas 20 imei1 varchar 30 0 0 1 0 NULL
+dbo vw_conciliacion_lineas 21 resultado varchar 19 0 0 0 0 NULL
+dbo vw_historial_asignaciones 1 id_activo int 4 10 0 0 0 NULL
+dbo vw_historial_asignaciones 2 codigo_activo varchar 50 0 0 0 0 NULL
+dbo vw_historial_asignaciones 3 tipo_activo varchar 100 0 0 0 0 NULL
+dbo vw_historial_asignaciones 4 marca varchar 150 0 0 1 0 NULL
+dbo vw_historial_asignaciones 5 modelo varchar 200 0 0 1 0 NULL
+dbo vw_historial_asignaciones 6 numero_serie varchar 200 0 0 1 0 NULL
+dbo vw_historial_asignaciones 7 id_asignacion int 4 10 0 0 0 NULL
+dbo vw_historial_asignaciones 8 fecha_entrega datetime2 8 27 7 0 0 NULL
+dbo vw_historial_asignaciones 9 fecha_devolucion datetime2 8 27 7 1 0 NULL
+dbo vw_historial_asignaciones 10 estado_entrega varchar 150 0 0 1 0 NULL
+dbo vw_historial_asignaciones 11 estado_devolucion varchar 150 0 0 1 0 NULL
+dbo vw_historial_asignaciones 12 id_trabajador int 4 10 0 0 0 NULL
+dbo vw_historial_asignaciones 13 dni varchar 12 0 0 1 0 NULL
+dbo vw_historial_asignaciones 14 trabajador varchar 351 0 0 1 0 NULL
+dbo vw_historial_asignaciones 15 area varchar 150 0 0 1 0 NULL
+dbo vw_historial_asignaciones 16 estado_asignacion varchar 10 0 0 0 0 NULL
+dbo vw_linea_equipo_trabajador 1 id_linea int 4 10 0 0 0 NULL
+dbo vw_linea_equipo_trabajador 2 numero_linea varchar 20 0 0 0 0 NULL
+dbo vw_linea_equipo_trabajador 3 operador varchar 100 0 0 0 0 NULL
+dbo vw_linea_equipo_trabajador 4 plan varchar 200 0 0 1 0 NULL
+dbo vw_linea_equipo_trabajador 5 id_trabajador int 4 10 0 1 0 NULL
+dbo vw_linea_equipo_trabajador 6 dni varchar 12 0 0 1 0 NULL
+dbo vw_linea_equipo_trabajador 7 trabajador varchar 351 0 0 1 0 NULL
+dbo vw_linea_equipo_trabajador 8 area varchar 150 0 0 1 0 NULL
+dbo vw_linea_equipo_trabajador 9 id_activo int 4 10 0 1 0 NULL
+dbo vw_linea_equipo_trabajador 10 codigo_activo varchar 50 0 0 1 0 NULL
+dbo vw_linea_equipo_trabajador 11 marca varchar 150 0 0 1 0 NULL
+dbo vw_linea_equipo_trabajador 12 modelo varchar 200 0 0 1 0 NULL
+dbo vw_linea_equipo_trabajador 13 imei1 varchar 30 0 0 1 0 NULL
+dbo vw_linea_equipo_trabajador 14 imei2 varchar 30 0 0 1 0 NULL
+dbo vw_linea_equipo_trabajador 15 numero_serie varchar 200 0 0 1 0 NULL
+dbo vw_lineas_asignadas 1 id_linea int 4 10 0 0 0 NULL
+dbo vw_lineas_asignadas 2 numero varchar 20 0 0 0 0 NULL
+dbo vw_lineas_asignadas 3 estado varchar 30 0 0 0 0 NULL
+dbo vw_lineas_asignadas 4 operador varchar 100 0 0 0 0 NULL
+dbo vw_lineas_asignadas 5 plan_actual varchar 200 0 0 1 0 NULL
+dbo vw_lineas_asignadas 6 fecha_inicio datetime2 8 27 7 0 0 NULL
+dbo vw_lineas_asignadas 7 id_trabajador int 4 10 0 0 0 NULL
+dbo vw_lineas_asignadas 8 dni varchar 12 0 0 1 0 NULL
+dbo vw_lineas_asignadas 9 trabajador varchar 351 0 0 1 0 NULL
+dbo vw_lineas_asignadas 10 area varchar 150 0 0 1 0 NULL
+dbo vw_lineas_asignadas 11 sede varchar 150 0 0 1 0 NULL
+dbo vw_lineas_sin_responsable 1 id_linea int 4 10 0 0 0 NULL
+dbo vw_lineas_sin_responsable 2 numero varchar 20 0 0 0 0 NULL
+dbo vw_lineas_sin_responsable 3 operador varchar 100 0 0 0 0 NULL
+dbo vw_lineas_sin_responsable 4 estado varchar 30 0 0 0 0 NULL
+dbo vw_usuarios_acceso 1 id_usuario_sistema int 4 10 0 0 0 NULL
+dbo vw_usuarios_acceso 2 user_logon varchar 100 0 0 0 0 NULL
+dbo vw_usuarios_acceso 3 user_fullname varchar 250 0 0 1 0 NULL
+dbo vw_usuarios_acceso 4 user_email varchar 250 0 0 1 0 NULL
+dbo vw_usuarios_acceso 5 user_estado_erp int 4 10 0 1 0 NULL
+dbo vw_usuarios_acceso 6 permitir_acceso bit 1 1 0 0 0 NULL
+dbo vw_usuarios_acceso 7 estado_local bit 1 1 0 0 0 NULL
+dbo vw_usuarios_acceso 8 id_rol int 4 10 0 1 0 NULL
+dbo vw_usuarios_acceso 9 rol_codigo varchar 50 0 0 1 0 NULL
+dbo vw_usuarios_acceso 10 rol varchar 100 0 0 1 0 NULL
+dbo vw_usuarios_acceso 11 ultima_sincronizacion datetime2 8 27 7 1 0 NULL
+dbo vw_usuarios_acceso 12 ultimo_acceso datetime2 8 27 7 1 0 NULL
+dbo vw_usuarios_permisos 1 id_usuario_sistema int 4 10 0 0 0 NULL
+dbo vw_usuarios_permisos 2 user_logon varchar 100 0 0 0 0 NULL
+dbo vw_usuarios_permisos 3 user_fullname varchar 250 0 0 1 0 NULL
+dbo vw_usuarios_permisos 4 rol varchar 50 0 0 0 0 NULL
+dbo vw_usuarios_permisos 5 permiso varchar 100 0 0 0 0 NULL
+dbo vw_usuarios_permisos 6 nombre_permiso varchar 150 0 0 0 0 NULL
+dbo vw_usuarios_permisos 7 modulo varchar 100 0 0 0 0 NULL
+sp_sincronizar_usuarios_erp 
+
+/* ============================================================
+   1. SINCRONIZAR USUARIOS ERP
+   ============================================================ */
+
+CREATE PROCEDURE dbo.sp_sincronizar_usuarios_erp
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+    SET XACT_ABORT ON;
+
+    -----------------------------------------------------------
+    -- ACTUALIZAR USUARIOS EXISTENTES
+    -----------------------------------------------------------
+
+    UPDATE LOCAL
+    SET
+        LOCAL.user_fullname = ERP.User_Fullname,
+        LOCAL.user_email = ERP.User_Email,
+        LOCAL.user_estado_erp = ERP.User_Estado,
+        LOCAL.ultima_sincronizacion = SYSDATETIME(),
+        LOCAL.fecha_actualizacion = SYSDATETIME()
+
+    FROM dbo.usuarios_sistema LOCAL
+
+    INNER JOIN
+        [DB_GP_Trabajos_TEST].[dbo].[vw_ERP_Usuarios] ERP
+        ON ERP.User_Logon COLLATE DATABASE_DEFAULT =
+           LOCAL.user_logon COLLATE DATABASE_DEFAULT;
+
+
+    -----------------------------------------------------------
+    -- INSERTAR USUARIOS NUEVOS
+    -----------------------------------------------------------
+
+    INSERT INTO dbo.usuarios_sistema
+    (
+        user_logon,
+        user_fullname,
+        user_email,
+        user_estado_erp,
+        permitir_acceso,
+        estado_local,
+        ultima_sincronizacion
+    )
+
+    SELECT DISTINCT
+
+        ERP.User_Logon,
+        ERP.User_Fullname,
+        ERP.User_Email,
+        ERP.User_Estado,
+
+        0,
+        1,
+
+        SYSDATETIME()
+
+    FROM
+        [DB_GP_Trabajos_TEST].[dbo].[vw_ERP_Usuarios] ERP
+
+    WHERE
+        ERP.User_Logon IS NOT NULL
+
+        AND NOT EXISTS
+        (
+            SELECT 1
+            FROM dbo.usuarios_sistema LOCAL
+
+            WHERE LOCAL.user_logon COLLATE DATABASE_DEFAULT =
+                  ERP.User_Logon COLLATE DATABASE_DEFAULT
+        );
+
+
+    -----------------------------------------------------------
+    -- RESULTADO
+    -----------------------------------------------------------
+
+    SELECT
+        COUNT(*) AS total_usuarios_locales,
+
+        SUM
+        (
+            CASE
+                WHEN permitir_acceso = 1 THEN 1
+                ELSE 0
+            END
+        ) AS usuarios_autorizados,
+
+        SYSDATETIME() AS fecha_sincronizacion
+
+    FROM dbo.usuarios_sistema;
+
+END;
+
+sp_asignar_activo 
+
+/* ============================================================
+   3. ASIGNAR ACTIVO
+   ============================================================ */
+
+CREATE PROCEDURE dbo.sp_asignar_activo
+
+    @id_activo INT,
+    @id_trabajador INT,
+    @estado_entrega VARCHAR(150) = NULL,
+    @motivo VARCHAR(300) = NULL,
+    @observacion VARCHAR(1500) = NULL,
+    @id_usuario INT = NULL
+
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+    SET XACT_ABORT ON;
+
+
+    IF EXISTS
+    (
+        SELECT 1
+        FROM dbo.asignaciones_activo
+        WHERE
+            id_activo = @id_activo
+            AND activo = 1
+    )
+    BEGIN
+
+        RAISERROR(
+            'El activo ya tiene una asignación activa.',
+            16,
+            1
+        );
+
+        RETURN;
+
+    END;
+
+
+    BEGIN TRY
+
+        BEGIN TRANSACTION;
+
+
+        INSERT INTO dbo.asignaciones_activo
+        (
+            id_activo,
+            id_trabajador,
+            estado_entrega,
+            motivo_entrega,
+            observacion_entrega,
+            usuario_entrega
+        )
+        VALUES
+        (
+            @id_activo,
+            @id_trabajador,
+            @estado_entrega,
+            @motivo,
+            @observacion,
+            @id_usuario
+        );
+
+
+        UPDATE dbo.activos
+
+        SET
+            id_estado_activo =
+            (
+                SELECT id_estado_activo
+                FROM dbo.estados_activo
+                WHERE codigo = 'ASIGNADO'
+            ),
+
+            fecha_actualizacion = SYSDATETIME()
+
+        WHERE id_activo = @id_activo;
+
+
+        INSERT INTO dbo.movimientos_activo
+        (
+            id_activo,
+            tipo_movimiento,
+            id_trabajador_destino,
+            descripcion,
+            id_usuario
+        )
+        VALUES
+        (
+            @id_activo,
+            'ASIGNACION',
+            @id_trabajador,
+            'Activo asignado al trabajador',
+            @id_usuario
+        );
+
+
+        COMMIT TRANSACTION;
+
+    END TRY
+
+    BEGIN CATCH
+
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+        DECLARE @MensajeError NVARCHAR(4000);
+
+        SET @MensajeError = ERROR_MESSAGE();
+
+        RAISERROR(@MensajeError,16,1);
+
+    END CATCH;
+
+END;
+
+sp_devolver_activo 
+
+/* ============================================================
+   4. DEVOLVER ACTIVO
+   ============================================================ */
+
+CREATE PROCEDURE dbo.sp_devolver_activo
+
+    @id_activo INT,
+    @estado_devolucion VARCHAR(150) = NULL,
+    @motivo VARCHAR(300) = NULL,
+    @observacion VARCHAR(1500) = NULL,
+    @id_usuario INT = NULL
+
+AS
+BEGIN
+
+    SET NOCOUNT ON;
+    SET XACT_ABORT ON;
+
+
+    DECLARE @id_trabajador INT;
+
+
+    SELECT
+        @id_trabajador = id_trabajador
+
+    FROM dbo.asignaciones_activo
+
+    WHERE
+        id_activo = @id_activo
+        AND activo = 1;
+
+
+    IF @id_trabajador IS NULL
+    BEGIN
+
+        RAISERROR(
+            'El activo no posee una asignación activa.',
+            16,
+            1
+        );
+
+        RETURN;
+
+    END;
+
+
+    BEGIN TRY
+
+        BEGIN TRANSACTION;
+
+
+        UPDATE dbo.asignaciones_activo
+
+        SET
+            fecha_devolucion = SYSDATETIME(),
+
+            estado_devolucion = @estado_devolucion,
+
+            motivo_devolucion = @motivo,
+
+            observacion_devolucion = @observacion,
+
+            usuario_devolucion = @id_usuario,
+
+            activo = 0
+
+        WHERE
+            id_activo = @id_activo
+            AND activo = 1;
+
+
+        UPDATE dbo.activos
+
+        SET
+            id_estado_activo =
+            (
+                SELECT id_estado_activo
+                FROM dbo.estados_activo
+                WHERE codigo = 'DISPONIBLE'
+            ),
+
+            fecha_actualizacion = SYSDATETIME()
+
+        WHERE id_activo = @id_activo;
+
+
+        INSERT INTO dbo.movimientos_activo
+        (
+            id_activo,
+            tipo_movimiento,
+            id_trabajador_origen,
+            descripcion,
+            id_usuario
+        )
+        VALUES
+        (
+            @id_activo,
+            'DEVOLUCION',
+            @id_trabajador,
+            'Activo devuelto al área de Sistemas',
+            @id_usuario
+        );
+
+
+        COMMIT TRANSACTION;
+
+    END TRY
+
+    BEGIN CATCH
+
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+        DECLARE @MensajeError NVARCHAR(4000);
+
+        SET @MensajeError = ERROR_MESSAGE();
+
+        RAISERROR(@MensajeError,16,1);
+
+    END CATCH;
+
+END;
+
+vw_activos_asignados 
+
+/* ============================================================
+   VISTA 1
+   ACTIVOS ASIGNADOS
+   ============================================================ */
+
+CREATE VIEW dbo.vw_activos_asignados
+AS
+
+SELECT
+
+    A.id_activo,
+
+    A.codigo,
+
+    TA.nombre AS tipo_activo,
+
+    EA.nombre AS estado_activo,
+
+    A.marca,
+
+    A.modelo,
+
+    A.numero_serie,
+
+    AA.id_asignacion,
+
+    AA.fecha_entrega,
+
+    T.id_trabajador,
+
+    T.dni,
+
+    LTRIM(RTRIM
+    (
+        ISNULL(T.nombres,'') + ' ' +
+        ISNULL(T.apellidos,'')
+    )) AS trabajador,
+
+    AR.nombre AS area,
+
+    S.nombre AS sede
+
+FROM dbo.activos A
+
+INNER JOIN dbo.tipos_activo TA
+    ON TA.id_tipo_activo = A.id_tipo_activo
+
+INNER JOIN dbo.estados_activo EA
+    ON EA.id_estado_activo = A.id_estado_activo
+
+INNER JOIN dbo.asignaciones_activo AA
+    ON AA.id_activo = A.id_activo
+    AND AA.activo = 1
+
+INNER JOIN dbo.trabajadores T
+    ON T.id_trabajador = AA.id_trabajador
+
+LEFT JOIN dbo.areas AR
+    ON AR.id_area = T.id_area
+
+LEFT JOIN dbo.sedes S
+    ON S.id_sede = AR.id_sede;
+
+vw_lineas_asignadas 
+
+/* ============================================================
+   VISTA 2
+   LÍNEAS ASIGNADAS
+   ============================================================ */
+
+CREATE VIEW dbo.vw_lineas_asignadas
+AS
+
+SELECT
+
+    L.id_linea,
+
+    L.numero,
+
+    L.estado,
+
+    O.nombre AS operador,
+
+    P.nombre AS plan_actual,
+
+    AL.fecha_inicio,
+
+    T.id_trabajador,
+
+    T.dni,
+
+    LTRIM(RTRIM
+    (
+        ISNULL(T.nombres,'') + ' ' +
+        ISNULL(T.apellidos,'')
+    )) AS trabajador,
+
+    AR.nombre AS area,
+
+    S.nombre AS sede
+
+FROM dbo.lineas_moviles L
+
+INNER JOIN dbo.operadores_moviles O
+    ON O.id_operador = L.id_operador
+
+LEFT JOIN dbo.planes_moviles P
+    ON P.id_plan = L.id_plan_actual
+
+INNER JOIN dbo.asignaciones_linea AL
+    ON AL.id_linea = L.id_linea
+    AND AL.activo = 1
+
+INNER JOIN dbo.trabajadores T
+    ON T.id_trabajador = AL.id_trabajador
+
+LEFT JOIN dbo.areas AR
+    ON AR.id_area = T.id_area
+
+LEFT JOIN dbo.sedes S
+    ON S.id_sede = AR.id_sede;
+
+vw_linea_equipo_trabajador 
+
+/* ============================================================
+   VISTA 3
+   LÍNEA + EQUIPO + TRABAJADOR
+   ============================================================ */
+
+CREATE VIEW dbo.vw_linea_equipo_trabajador
+AS
+
+SELECT
+
+    L.id_linea,
+
+    L.numero AS numero_linea,
+
+    O.nombre AS operador,
+
+    P.nombre AS [plan],
+
+    T.id_trabajador,
+
+    T.dni,
+
+    LTRIM(RTRIM
+    (
+        ISNULL(T.nombres,'') + ' ' +
+        ISNULL(T.apellidos,'')
+    )) AS trabajador,
+
+    AR.nombre AS area,
+
+    A.id_activo,
+
+    A.codigo AS codigo_activo,
+
+    A.marca,
+
+    A.modelo,
+
+    AC.imei1,
+
+    AC.imei2,
+
+    A.numero_serie
+
+FROM dbo.lineas_moviles L
+
+INNER JOIN dbo.operadores_moviles O
+    ON O.id_operador = L.id_operador
+
+LEFT JOIN dbo.planes_moviles P
+    ON P.id_plan = L.id_plan_actual
+
+LEFT JOIN dbo.asignaciones_linea AL
+    ON AL.id_linea = L.id_linea
+    AND AL.activo = 1
+
+LEFT JOIN dbo.trabajadores T
+    ON T.id_trabajador = AL.id_trabajador
+
+LEFT JOIN dbo.areas AR
+    ON AR.id_area = T.id_area
+
+LEFT JOIN dbo.linea_equipo_historial LEH
+    ON LEH.id_linea = L.id_linea
+    AND LEH.activo = 1
+
+LEFT JOIN dbo.activos A
+    ON A.id_activo = LEH.id_activo
+
+LEFT JOIN dbo.activos_celulares AC
+    ON AC.id_activo = A.id_activo;
+
+vw_lineas_sin_responsable 
+
+/* ============================================================
+   VISTA 4
+   LÍNEAS SIN RESPONSABLE
+   ============================================================ */
+
+CREATE VIEW dbo.vw_lineas_sin_responsable
+AS
+
+SELECT
+
+    L.id_linea,
+
+    L.numero,
+
+    O.nombre AS operador,
+
+    L.estado
+
+FROM dbo.lineas_moviles L
+
+INNER JOIN dbo.operadores_moviles O
+    ON O.id_operador = L.id_operador
+
+LEFT JOIN dbo.asignaciones_linea AL
+    ON AL.id_linea = L.id_linea
+    AND AL.activo = 1
+
+WHERE
+    L.estado = 'ACTIVA'
+
+    AND AL.id_asignacion_linea IS NULL;
+
+vw_conciliacion_lineas 
+
+/* ============================================================
+   VISTA 5
+   CONCILIACIÓN MENSUAL
+   ============================================================ */
+
+CREATE VIEW dbo.vw_conciliacion_lineas
+AS
+
+SELECT
+
+    F.id_factura,
+
+    F.numero_factura,
+
+    F.periodo_inicio,
+
+    F.periodo_fin,
+
+    FD.numero_linea,
+
+    FD.nombre_plan,
+
+    FD.cargo_plan,
+
+    FD.prorrateo,
+
+    FD.cargos_adicionales,
+
+    FD.descuentos,
+
+    FD.cargo_equipos,
+
+    FD.monto_total,
+
+    L.id_linea,
+
+    T.id_trabajador,
+
+    LTRIM(RTRIM
+    (
+        ISNULL(T.nombres,'') + ' ' +
+        ISNULL(T.apellidos,'')
+    )) AS trabajador,
+
+    A.id_activo,
+
+    A.codigo AS codigo_equipo,
+
+    A.marca,
+
+    A.modelo,
+
+    AC.imei1,
+
+    CASE
+
+        WHEN L.id_linea IS NULL
+            THEN 'LINEA_NO_REGISTRADA'
+
+        WHEN AL.id_asignacion_linea IS NULL
+            THEN 'SIN_RESPONSABLE'
+
+        WHEN LEH.id_linea_equipo IS NULL
+            THEN 'SIN_EQUIPO'
+
+        ELSE 'CONFORME'
+
+    END AS resultado
+
+FROM dbo.facturas_telefonia_detalle FD
+
+INNER JOIN dbo.facturas_telefonia F
+    ON F.id_factura = FD.id_factura
+
+LEFT JOIN dbo.lineas_moviles L
+    ON L.numero = FD.numero_linea
+
+LEFT JOIN dbo.asignaciones_linea AL
+    ON AL.id_linea = L.id_linea
+    AND AL.activo = 1
+
+LEFT JOIN dbo.trabajadores T
+    ON T.id_trabajador = AL.id_trabajador
+
+LEFT JOIN dbo.linea_equipo_historial LEH
+    ON LEH.id_linea = L.id_linea
+    AND LEH.activo = 1
+
+LEFT JOIN dbo.activos A
+    ON A.id_activo = LEH.id_activo
+
+LEFT JOIN dbo.activos_celulares AC
+    ON AC.id_activo = A.id_activo;
+
+vw_historial_asignaciones 
+
+/* ============================================================
+   VISTA 6
+   HISTORIAL DE ASIGNACIONES
+   ============================================================ */
+
+CREATE VIEW dbo.vw_historial_asignaciones
+AS
+
+SELECT
+
+    A.id_activo,
+
+    A.codigo AS codigo_activo,
+
+    TA.nombre AS tipo_activo,
+
+    A.marca,
+
+    A.modelo,
+
+    A.numero_serie,
+
+    AA.id_asignacion,
+
+    AA.fecha_entrega,
+
+    AA.fecha_devolucion,
+
+    AA.estado_entrega,
+
+    AA.estado_devolucion,
+
+    T.id_trabajador,
+
+    T.dni,
+
+    LTRIM(RTRIM
+    (
+        ISNULL(T.nombres,'') + ' ' +
+        ISNULL(T.apellidos,'')
+    )) AS trabajador,
+
+    AR.nombre AS area,
+
+    CASE
+        WHEN AA.activo = 1
+            THEN 'ACTUAL'
+        ELSE 'FINALIZADA'
+    END AS estado_asignacion
+
+FROM dbo.asignaciones_activo AA
+
+INNER JOIN dbo.activos A
+    ON A.id_activo = AA.id_activo
+
+INNER JOIN dbo.tipos_activo TA
+    ON TA.id_tipo_activo = A.id_tipo_activo
+
+INNER JOIN dbo.trabajadores T
+    ON T.id_trabajador = AA.id_trabajador
+
+LEFT JOIN dbo.areas AR
+    ON AR.id_area = T.id_area;
+
+vw_usuarios_acceso 
+
+/* ============================================================
+   VISTA 7
+   USUARIOS + ACCESO + ROL
+   ============================================================ */
+
+CREATE VIEW dbo.vw_usuarios_acceso
+AS
+
+SELECT
+
+    U.id_usuario_sistema,
+
+    U.user_logon,
+
+    U.user_fullname,
+
+    U.user_email,
+
+    U.user_estado_erp,
+
+    U.permitir_acceso,
+
+    U.estado_local,
+
+    R.id_rol,
+
+    R.codigo AS rol_codigo,
+
+    R.nombre AS rol,
+
+    U.ultima_sincronizacion,
+
+    U.ultimo_acceso
+
+FROM dbo.usuarios_sistema U
+
+LEFT JOIN dbo.roles R
+    ON R.id_rol = U.id_rol;
+
+vw_usuarios_permisos 
+
+/* ============================================================
+   VISTA 8
+   USUARIOS Y PERMISOS
+   ============================================================ */
+
+CREATE VIEW dbo.vw_usuarios_permisos
+AS
+
+SELECT
+
+    U.id_usuario_sistema,
+
+    U.user_logon,
+
+    U.user_fullname,
+
+    R.codigo AS rol,
+
+    P.codigo AS permiso,
+
+    P.nombre AS nombre_permiso,
+
+    P.modulo
+
+FROM dbo.usuarios_sistema U
+
+INNER JOIN dbo.roles R
+    ON R.id_rol = U.id_rol
+
+INNER JOIN dbo.rol_permisos RP
+    ON RP.id_rol = R.id_rol
+
+INNER JOIN dbo.permisos P
+    ON P.id_permiso = RP.id_permiso
+
+WHERE
+    U.permitir_acceso = 1
+
+    AND U.estado_local = 1
+
+    AND P.estado = 1;
+
+sp_validar_acceso_sistema 
+CREATE PROCEDURE dbo.sp_validar_acceso_sistema
+    @Usuario VARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    IF NOT EXISTS
+    (
+        SELECT 1
+        FROM dbo.usuarios_sistema
+        WHERE user_logon = @Usuario
+    )
+    BEGIN
+        SELECT
+            0 AS Success,
+            'Usuario no registrado en Gestión TI' AS Message;
+        RETURN;
+    END;
+
+
+    -- 0 = ACTIVO
+    -- 1 = INACTIVO
+    IF EXISTS
+    (
+        SELECT 1
+        FROM dbo.usuarios_sistema
+        WHERE
+            user_logon = @Usuario
+            AND ISNULL(user_estado_erp,1) <> 0
+    )
+    BEGIN
+        SELECT
+            0 AS Success,
+            'Usuario inactivo en el sistema corporativo' AS Message;
+        RETURN;
+    END;
+
+
+    IF EXISTS
+    (
+        SELECT 1
+        FROM dbo.usuarios_sistema
+        WHERE
+            user_logon = @Usuario
+            AND estado_local = 0
+    )
+    BEGIN
+        SELECT
+            0 AS Success,
+            'Usuario deshabilitado en Gestión TI' AS Message;
+        RETURN;
+    END;
+
+
+    IF EXISTS
+    (
+        SELECT 1
+        FROM dbo.usuarios_sistema
+        WHERE
+            user_logon = @Usuario
+            AND permitir_acceso = 0
+    )
+    BEGIN
+        SELECT
+            0 AS Success,
+            'El usuario no tiene acceso autorizado a Gestión TI' AS Message;
+        RETURN;
+    END;
+
+
+    IF EXISTS
+    (
+        SELECT 1
+        FROM dbo.usuarios_sistema
+        WHERE
+            user_logon = @Usuario
+            AND id_rol IS NULL
+    )
+    BEGIN
+        SELECT
+            0 AS Success,
+            'El usuario no tiene un rol asignado' AS Message;
+        RETURN;
+    END;
+
+
+    UPDATE dbo.usuarios_sistema
+    SET ultimo_acceso = SYSDATETIME()
+    WHERE user_logon = @Usuario;
+
+
+    SELECT
+        1 AS Success,
+        'Acceso autorizado' AS Message,
+
+        U.id_usuario_sistema,
+        U.user_logon,
+        U.user_fullname,
+        U.user_email,
+
+        R.id_rol,
+        R.codigo AS rol_codigo,
+        R.nombre AS rol
+
+    FROM dbo.usuarios_sistema U
+
+    INNER JOIN dbo.roles R
+        ON R.id_rol = U.id_rol
+
+    WHERE U.user_logon = @Usuario;
+END;
+
+sp_asignar_activo @id_activo int 4 0
+sp_asignar_activo @id_trabajador int 4 0
+sp_asignar_activo @estado_entrega varchar 150 0
+sp_asignar_activo @motivo varchar 300 0
+sp_asignar_activo @observacion varchar 1500 0
+sp_asignar_activo @id_usuario int 4 0
+sp_devolver_activo @id_activo int 4 0
+sp_devolver_activo @estado_devolucion varchar 150 0
+sp_devolver_activo @motivo varchar 300 0
+sp_devolver_activo @observacion varchar 1500 0
+sp_devolver_activo @id_usuario int 4 0
+sp_validar_acceso_sistema @Usuario varchar 100 0
+DB_GP_Trabajos_TEST
+@Usuario varchar 50
+@Contrasena varchar 255
+
+-- ==========================================
+--   4. STORED PROCEDURES
+-- ==========================================
+
+-- SP: Login de usuario
+CREATE PROCEDURE sp_login_usuario
+    @Usuario VARCHAR(50),
+    @Contrasena VARCHAR(255)
+AS
+BEGIN
+    IF NOT EXISTS (SELECT 1 FROM TBL_USUARIOS WHERE Usuario = @Usuario)
+    BEGIN
+        SELECT 0 AS Success, 'Usuario no encontrado' AS Message
+        RETURN
+    END
+    
+    IF EXISTS (SELECT 1 FROM TBL_USUARIOS WHERE Usuario = @Usuario AND Bloqueado = '1')
+    BEGIN
+        SELECT 0 AS Success, 'Usuario bloqueado. Contacte al administrador' AS Message
+        RETURN
+    END
+    
+    IF EXISTS (SELECT 1 FROM TBL_USUARIOS WHERE Usuario = @Usuario AND Activo = '2')
+    BEGIN
+        SELECT 0 AS Success, 'Usuario inactivo' AS Message
+        RETURN
+    END
+    
+    IF EXISTS (SELECT 1 FROM TBL_USUARIOS WHERE Usuario = @Usuario AND Contrasena = @Contrasena)
+    BEGIN
+        UPDATE TBL_USUARIOS 
+        SET UltimoAcceso = GETDATE(), IntentosFallidos = 0
+        WHERE Usuario = @Usuario
+        
+        SELECT 
+            1 AS Success,
+            'Login exitoso' AS Message,
+            IdUsuario, Usuario, NombreCompleto, Email, Rol, UltimoAcceso
+        FROM TBL_USUARIOS
+        WHERE Usuario = @Usuario
+    END
+    ELSE
+    BEGIN
+        UPDATE TBL_USUARIOS 
+        SET IntentosFallidos = IntentosFallidos + 1,
+            Bloqueado = CASE WHEN IntentosFallidos >= 4 THEN '1' ELSE '2' END
+        WHERE Usuario = @Usuario
+        
+        SELECT 0 AS Success, 'Contraseña incorrecta' AS Message
+    END
+END
+
+
+CREATE VIEW dbo.vw_ERP_Usuarios
+AS
+WITH Base AS (
+    SELECT
+        LTRIM(RTRIM(User_Fullname)) AS User_Fullname,
+        LTRIM(RTRIM(User_Logon))    AS User_Logon,
+        LTRIM(RTRIM(User_Estado))   AS User_Estado,
+        LTRIM(RTRIM(User_Email))    AS User_Email,
+        User_PassBin
+    FROM [ERP_101013].[dbGP_2024_GP].[dbo].[MA001020]
+    WHERE NULLIF(LTRIM(RTRIM(User_Logon)), '') IS NOT NULL
+),
+Dedup AS (
+    SELECT *,
+           ROW_NUMBER() OVER (PARTITION BY User_Logon ORDER BY User_Logon) AS rn
+    FROM Base
+)
+SELECT
+    User_Fullname,
+    User_Logon,
+    User_Estado,
+    User_Email,
+    User_PassBin
+FROM Dedup
+WHERE rn = 1;
+
+1 ADMIN Administrador Acceso completo al Sistema de Gestión Tecnológica 1 2026-10-06 23:19:00.9012729
+2 SISTEMAS Sistemas Gestión operativa de activos, líneas, inventarios y mantenimientos 1 2026-10-06 23:19:00.9012729
+3 CONSULTA Consulta Acceso de solo lectura 1 2026-10-06 23:19:00.9012729
+4 AUDITOR Auditor Consulta de trazabilidad y auditoría 1 2026-10-06 23:19:00.9012729
+1 DASHBOARD_VER Ver dashboard DASHBOARD NULL 1
+2 ACTIVOS_VER Ver activos ACTIVOS NULL 1
+3 ACTIVOS_CREAR Registrar activos ACTIVOS NULL 1
+4 ACTIVOS_EDITAR Editar activos ACTIVOS NULL 1
+5 ASIGNACIONES_VER Ver asignaciones ASIGNACIONES NULL 1
+6 ASIGNACIONES_CREAR Asignar equipos ASIGNACIONES NULL 1
+7 ASIGNACIONES_DEVOLVER Registrar devolución ASIGNACIONES NULL 1
+8 LINEAS_VER Ver líneas móviles TELEFONIA NULL 1
+9 LINEAS_EDITAR Gestionar líneas móviles TELEFONIA NULL 1
+10 LINEAS_CONCILIAR Realizar conciliación mensual TELEFONIA NULL 1
+11 MANTENIMIENTO_VER Ver mantenimientos MANTENIMIENTO NULL 1
+12 MANTENIMIENTO_EDITAR Gestionar mantenimientos MANTENIMIENTO NULL 1
+13 INVENTARIO_VER Ver inventarios INVENTARIO NULL 1
+14 INVENTARIO_GESTIONAR Gestionar inventarios físicos INVENTARIO NULL 1
+15 DOCUMENTOS_VER Ver documentos DOCUMENTOS NULL 1
+16 DOCUMENTOS_GENERAR Generar documentos DOCUMENTOS NULL 1
+17 USUARIOS_VER Ver usuarios SEGURIDAD NULL 1
+18 USUARIOS_EDITAR Gestionar accesos y roles SEGURIDAD NULL 1
+19 AUDITORIA_VER Ver auditoría AUDITORIA NULL 1
